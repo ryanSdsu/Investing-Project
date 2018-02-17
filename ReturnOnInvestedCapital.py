@@ -59,6 +59,7 @@ def ROIC(FN, ticker):
                 break
         EPS = EPS[start:].replace("\n","")
         EPS = EPS.split(",")
+        ttmEPS = EPS[-1]
         EPS = EPS[:-1]
         print(EPS)
 
@@ -95,7 +96,6 @@ def ROIC(FN, ticker):
             NetIncomeMod += "]"
 
         print(NetIncomeMod)
-        print('\n')
 
-    return
+    return ttmEPS
 

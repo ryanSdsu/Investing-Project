@@ -3,6 +3,7 @@ import os
 
 from pathlib import Path
 from ReturnOnInvestedCapital import ROIC
+from PEratio import getPeRatio
 
 with open("/Users/RJ/PycharmProjects/Investing-Project/List of company ticker",'r') as tickerFile:
     tickerFile = tickerFile.readlines()
@@ -17,7 +18,7 @@ with open("/Users/RJ/PycharmProjects/Investing-Project/List of company ticker",'
         analysisLink += " Key Ratios.csv.html"
         analysisLink = analysisLink.replace("\n","")
 
-        ROIC(analysisLink, ticker)
+        ttmEPS = ROIC(analysisLink, ticker)
 
         #/Users/RJ/Downloads/AAPL Key Ratios.csv.html
         my_file = Path(analysisLink)
@@ -26,4 +27,9 @@ with open("/Users/RJ/PycharmProjects/Investing-Project/List of company ticker",'
         while my_file.exists():
             os.remove(analysisLink)
 
-    print("Stock analysis complete!")
+        getPeRatio(ticker)
+        print("TTM EPS: {}".format(ttmEPS))
+        print('\n')
+
+
+print("Stock analysis complete!")
