@@ -1,6 +1,6 @@
 import statistics
 
-with open("/Users/RJ/PycharmProjects/MorningStarRuleOne/FB Key Ratios.csv.html", 'r') as x:
+with open("/Users/RJ/PycharmProjects/Investing-Project/FB Key Ratios.csv.html", 'r') as x:
     x = x.readlines()
     for idx,row in enumerate(x):
         if "Return on Invested Capital" in row:
