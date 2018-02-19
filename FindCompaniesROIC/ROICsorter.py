@@ -9,7 +9,11 @@ def ROIC(FN, ticker):
         my_file = Path(FN)
 
     with open(FN, 'r') as x:
-        x = x.readlines()
+        x = x.read()
+        #Return empty list if there is no ROIC
+        if "Return on Invested Capital" not in x:
+            return roicList
+        x = x.split("\n")
         for idx,row in enumerate(x):
             if "Return on Invested Capital" in row:
                 ROIC = x[idx]
@@ -38,9 +42,5 @@ def ROIC(FN, ticker):
             print("Ticker: " + ticker.replace("\n","") + ", {} {}".format(ROIC[-1], statistics.mean(ROIC[-6:-1])))
             roicList.append(ROIC[-1])
             roicList.append(statistics.mean(ROIC[-6:-1]))
-        else:
-            roicList.append(0)
 
     return roicList
-
-
