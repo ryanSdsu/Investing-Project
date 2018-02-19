@@ -28,7 +28,7 @@ with open(companyList,'r') as tickerFile:
             #print("Checking if {} ajax completed, time left: {}".format(ticker, timeout - time.time()))
             #print(time.time())
             if time.time() >= timeout:
-                os.system("killall Safari")
+                os.system("osascript -e 'quit app \"Safari\"'")
                 ajaxFail = "True"
                 break
             my_file = Path(analysisLink)
