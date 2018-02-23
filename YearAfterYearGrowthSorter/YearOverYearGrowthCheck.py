@@ -2,18 +2,27 @@ def YearOverYearGrowthCheck(ticker):
     print("Total Revneue, Net Income, EPS: " + ticker)
 
     url = "https://www.msn.com/en-us/money/stockdetails/financials/fi-126.1."
+    urlCSLAnys = url + ticker[:ticker.find(".")]
     url += ticker
     url = url.replace("\n", "")
     urlNAS = url + ".NAS"
     urlNYS = url + ".NYS"
+    urlCSLAnys += "%7CSLA%7CA.NYS."
+    urlCSLAnys += ticker
 
     htmlAsList = attemptToOpenUrl(urlNAS)
     indexList = attemptToGetIndexList(htmlAsList)
 
-    print(indexList)
     if len(indexList) == 0:
         htmlAsList = attemptToOpenUrl(urlNYS)
         indexList = attemptToGetIndexList(htmlAsList)
+
+    if len(indexList) == 0:
+        print("checking url: " + urlCSLAnys)
+        htmlAsList = attemptToOpenUrl(urlCSLAnys)
+        indexList = attemptToGetIndexList(htmlAsList)
+
+    print(indexList)
 
     totalRevenue = htmlAsList[indexList[0]:indexList[1]]
     netIncome = htmlAsList[indexList[2]:indexList[3]]
@@ -52,21 +61,25 @@ def findYearOverYearValues(webLinkList):
     current = webLinkList[20].split("\'")
     current = current[3]
     current = current.replace(",","")
+    current = current.replace("-","0")
     YearOverYearList.append(float(current))
 
     oneYearAgo = webLinkList[15].split("\'")
     oneYearAgo = oneYearAgo[3]
     oneYearAgo = oneYearAgo.replace(",","")
+    oneYearAgo = oneYearAgo.replace("-","0")
     YearOverYearList.append(float(oneYearAgo))
 
     twoYearsAgo = webLinkList[10].split("\'")
     twoYearsAgo = twoYearsAgo[3]
     twoYearsAgo = twoYearsAgo.replace(",","")
+    twoYearsAgo = twoYearsAgo.replace("-","0")
     YearOverYearList.append(float(twoYearsAgo))
 
     threeYearsAgo = webLinkList[5].split("\'")
     threeYearsAgo = threeYearsAgo[3]
     threeYearsAgo = threeYearsAgo.replace(",","")
+    threeYearsAgo = threeYearsAgo.replace("-","0")
     YearOverYearList.append(float(threeYearsAgo))
 
     return YearOverYearList
@@ -101,5 +114,3 @@ def attemptToGetIndexList(htmlAsList):
             checkWAS = True
 
     return indexList
-
-YearOverYearGrowthCheck("FB")
