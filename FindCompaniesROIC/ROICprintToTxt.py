@@ -58,25 +58,25 @@ def findCompaniesROIC(companyListcsv):
                 if roicList[1] >= 40:
                     with open("40%ROIC.txt", 'a') as FortyPercentCompanies:
                         FortyPercentCompanies.write(ticker.replace("\n", ""))
-                        FortyPercentCompanies.write(" {}, {}".format(roicList[0], roicList[1]))
+                        FortyPercentCompanies.write(roicList[0])
                         FortyPercentCompanies.write("\n")
             elif roicList[0] >= 30:
                 if roicList[1] >= 30:
                     with open("30%ROIC.txt", 'a') as ThirtyPercentCompanies:
                         ThirtyPercentCompanies.write(ticker.replace("\n", ""))
-                        ThirtyPercentCompanies.write(" {}, {}".format(roicList[0], roicList[1]))
+                        ThirtyPercentCompanies.write(roicList[0])
                         ThirtyPercentCompanies.write("\n")
             elif roicList[0] >= 20:
                 if roicList[1] >= 20:
                     with open("20%ROIC.txt", 'a') as TwentyPercentCompanies:
                         TwentyPercentCompanies.write(ticker.replace("\n", ""))
-                        TwentyPercentCompanies.write(" {}, {}".format(roicList[0], roicList[1]))
+                        TwentyPercentCompanies.write(roicList[0])
                         TwentyPercentCompanies.write("\n")
             elif roicList[0] >= 10:
                 if roicList[1] >= 10:
                     with open("10%ROIC.txt", 'a') as TenPercentCompanies:
                         TenPercentCompanies.write(ticker.replace("\n", ""))
-                        TenPercentCompanies.write(" {}, {}".format(roicList[0], roicList[1]))
+                        TenPercentCompanies.write(roicList[0])
                         TenPercentCompanies.write("\n")
 
             print("Going to the next ticker...")
