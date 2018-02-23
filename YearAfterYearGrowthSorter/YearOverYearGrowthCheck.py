@@ -41,16 +41,19 @@ def YearOverYearGrowthCheck(ticker):
             if basicEpsList[0] > basicEpsList[1]:
                 with open("1YearOverYearGrowth.txt", 'a') as oneYear:
                     oneYear.write(ticker)
-                if totalRevenueList[1] > totalRevenueList[2]:
+                    oneYear.write('\n')
+            if totalRevenueList[1] > totalRevenueList[2]:
                     if netIncomeList[1] > netIncomeList[2]:
                         if basicEpsList[1] > basicEpsList[2]:
                             with open("2YearOverYearGrowth.txt", 'a') as twoYear:
                                 twoYear.write(ticker)
-                            if totalRevenueList[2] > totalRevenueList[3]:
+                                twoYear.write('\n')
+                        if totalRevenueList[2] > totalRevenueList[3]:
                                 if netIncomeList[2] > netIncomeList[3]:
                                     if basicEpsList[2] > basicEpsList[3]:
                                         with open("3YearOverYearGrowth.txt", 'a') as threeYear:
                                             threeYear.write(ticker)
+                                            threeYear.write('\n')
 
     return
 
