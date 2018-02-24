@@ -4,5 +4,6 @@ with open("/Users/RJ/PycharmProjects/Investing-Project/YearAfterYearGrowthSorter
     ROIClist = ROIClist.read().split('\n')
     for idx,ticker in enumerate(ROIClist):
         YearOverYearGrowthCheck(ticker)
-        print("{} of {} to go!".format(idx, len(ROIClist)))
-        print("Sorting Complete!")
+        print("{} of {} to go!".format(idx, len(ROIClist) - 1))
+        print("\n")
+    print("Sorting Complete!")

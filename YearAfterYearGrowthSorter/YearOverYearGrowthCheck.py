@@ -1,6 +1,6 @@
 def YearOverYearGrowthCheck(ticker):
     print("Total Revneue, Net Income, EPS: " + ticker)
-
+    ticker = ticker.replace('\n', "")
     url = "https://www.msn.com/en-us/money/stockdetails/financials/fi-126.1."
     urlCSLAnys = url + ticker[:ticker.find(".")]
     url += ticker
